@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Decode</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alumni+Sans:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- global stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <div class="header-container" id="header">
+            <div id="logo-container">
+                <a href="index.html"><img src="assets/decode_logo.svg"></a>
+            </div>
+            <div id="links-container">
+                <a class="header-links" href="one.html">one</a>
+                <a class="header-links" href="two.html">two</a>
+                <a class="header-links" href="three.html">three</a>
+                <a class="header-links" href="four.html">four</a>
+                <a class="header-links" href="five.html">five</a>
+                <a class="header-links highlighted" href="six.html">six</a>
+                <a class="header-links" href="seven.html">seven</a>
+            </div>
+        </div>
+
+        <div class="content-container" id="not-scanned">
+            <div class="content-container fullscreen">
+                <div class="content-item page-header centered">
+                    head to the sixth task
+                </div>
+                <div id="task-page-logo-container">
+                    <img src="assets/square_logo.svg">
+                    <div class="content-item page-title centered">
+                    ???
+                    </div>
+                </div>
+                <div class="content-item page-header centered">
+                    hint: where do all these different-looking codes lead you to?
+                </div>
+            </div>
+
+            <div class="content-item next-step centered">
+                < complete this before the next >
+            </div>
+        </div>
+
+        <div class="content-container" id="scanned">
+            <div class="content-container fullscreen">
+                <div class="content-item page-header centered">
+                    successfully scanned
+                </div>
+                <div id="task-page-logo-container">
+                    <img src="assets/square_logo.svg">
+                    <div class="content-item page-title">
+                    digital eyes
+                    </div>
+                </div>
+                <div class="content-item page-header centered">
+                    these qr codes look different from one another <br> but all leads back here <br><br><br><br> find out more about the scanning algorithm in six: part ii
+                </div>
+            </div>
+            <div class="content-item header-type">
+                what you just experienced
+            </div>
+            <div class="content-item body-type">
+                Humans see images, color, and composition — but the scanner sees binary contrast patterns. What looks different to us can be identical to the algorithm.<br> <br>QR readers process images by converting them to black-and-white pixel maps. They ignore texture, color, and decoration as long as the data modules remain intact and contrast is high enough. 
+            </div>
+            <div class="content-item header-type">
+                who is really seeing
+            </div>
+            <div class="content-item body-type">
+                Machines don’t see what we see — yet we rely on them to translate visual language into meaning. Who’s really reading the image?
+            </div>
+            <div class="content-item next-step centered">
+                <a href="seven.html">< move to task seven ></a>
+            </div>
+        </div>
+
+        <div class="footer-container" id="footer">
+            did platforms: coded life - ler shan & danikh
+        </div>
+    </div>
+
+    <script>
+    window.onload = () => {
+      let success_six = false;
+      if (localStorage.getItem("success_six")) {
+        const successValue = localStorage.getItem("success_six");
+        success_six = successValue ? true : false;
+      }
+
+      if (!success_six) {
+        const params = new URLSearchParams(document.location.search);
+        const successValue = params.get("success_six");
+        if (successValue) {
+          localStorage.setItem("success_six", true);
+          success_six = true;
+        }
+      }
+
+      if (success_six) {
+        console.log("success!");
+        document.querySelector("#scanned").style.display = "block";
+        document.querySelector("#not-scanned").style.display = "none";
+      } else {
+        console.log("no success.");
+        document.querySelector("#scanned").style.display = "none";
+        document.querySelector("#not-scanned").style.display = "block";
+      }
+      
+    }
+  </script>
+</body>
+
+</html>

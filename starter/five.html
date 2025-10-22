@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Decode</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alumni+Sans:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- global stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <div class="header-container" id="header">
+            <div id="logo-container">
+                <a href="index.html"><img src="assets/decode_logo.svg"></a>
+            </div>
+            <div id="links-container">
+                <a class="header-links" href="one.html">one</a>
+                <a class="header-links" href="two.html">two</a>
+                <a class="header-links" href="three.html">three</a>
+                <a class="header-links" href="four.html">four</a>
+                <a class="header-links highlighted" href="five.html">five</a>
+                <a class="header-links" href="six.html">six</a>
+                <a class="header-links" href="seven.html">seven</a>
+            </div>
+        </div>
+
+        <div class="content-container" id="not-scanned">
+            <div class="content-container fullscreen">
+                <div class="content-item page-header centered">
+                    head to the fifth task
+                </div>
+                <div id="task-page-logo-container">
+                    <img src="assets/square_logo.svg">
+                    <div class="content-item page-title centered">
+                    ???
+                    </div>
+                </div>
+                <div class="content-item page-header centered">
+                    hint: try every one you see
+                </div>
+            </div>
+
+            <div class="content-item next-step centered">
+                < complete this before the next >
+            </div>
+        </div>
+
+        <div class="content-container" id="scanned">
+            <div class="content-container fullscreen">
+                <div class="content-item page-header centered">
+                    successfully scanned
+                </div>
+                <div id="task-page-logo-container">
+                    <img src="assets/square_logo.svg">
+                    <div class="content-item page-title">
+                    universality
+                    </div>
+                </div>
+                <div class="content-item page-header centered">
+                    all qr codes have these 3 markers that help your phone to identify these visuals as codes
+                </div>
+            </div>
+            <div class="content-item header-type">
+                what you just experienced
+            </div>
+            <div class="content-item body-type">
+                Every QR code has three position markers that help scanners detect the code instantly — no matter its size, rotation, or angle.<br> <br>The 3 large squares (finder patterns) tell the algorithm where the corners of the code are, while the smaller alignment and timing patterns fine-tune distortion. This universal geometry makes QR codes readable anywhere in the world.
+            </div>
+            <div class="content-item header-type">
+                think about it
+            </div>
+            <div class="content-item body-type">
+                Three corners are always marked — but one is always blank. Why might the system leave one corner out?
+            </div>
+            <div class="content-item next-step centered">
+                <a href="six.html">< move to task six ></a>
+            </div>
+        </div>
+
+        <div class="footer-container" id="footer">
+            did platforms: coded life - ler shan & danikh
+        </div>
+    </div>
+
+    <script>
+    window.onload = () => {
+      let success_five = false;
+      if (localStorage.getItem("success_five")) {
+        const successValue = localStorage.getItem("success_five");
+        success_five = successValue ? true : false;
+      }
+
+      if (!success_five) {
+        const params = new URLSearchParams(document.location.search);
+        const successValue = params.get("success_five");
+        if (successValue) {
+          localStorage.setItem("success_five", true);
+          success_five = true;
+        }
+      }
+
+      if (success_five) {
+        console.log("success!");
+        document.querySelector("#scanned").style.display = "block";
+        document.querySelector("#not-scanned").style.display = "none";
+      } else {
+        console.log("no success.");
+        document.querySelector("#scanned").style.display = "none";
+        document.querySelector("#not-scanned").style.display = "block";
+      }
+      
+    }
+  </script>
+</body>
+
+</html>
