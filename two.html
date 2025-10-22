@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Decode</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alumni+Sans:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- global stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <div class="header-container" id="header">
+            <div id="logo-container">
+                <a href="index.html"><img src="assets/decode_logo.svg"></a>
+            </div>
+            <div id="links-container">
+                <a class="header-links" href="one.html">one</a>
+                <a class="header-links highlighted" href="two.html">two</a>
+                <a class="header-links" href="three.html">three</a>
+                <a class="header-links" href="four.html">four</a>
+                <a class="header-links" href="five.html">five</a>
+                <a class="header-links" href="six.html">six</a>
+                <a class="header-links" href="seven.html">seven</a>
+            </div>
+        </div>
+
+        <div class="content-container" id="not-scanned">
+            <div class="content-container fullscreen">
+                <div class="content-item page-header centered">
+                    head to the second task
+                </div>
+                <div id="task-page-logo-container">
+                    <img src="assets/square_logo.svg">
+                    <div class="content-item page-title centered">
+                    ???
+                    </div>
+                </div>
+                <div class="content-item page-header centered">
+                    hint: how does the visibility percentage affect whether the code is scannable?
+                </div>
+            </div>
+
+            <div class="content-item next-step centered">
+                < complete this before the next >
+            </div>
+        </div>
+
+        <div class="content-container" id="scanned">
+            <div class="content-container fullscreen">
+                <div class="content-item page-header centered">
+                    successfully scanned
+                </div>
+                <div id="task-page-logo-container">
+                    <img src="assets/square_logo.svg">
+                    <div class="content-item page-title">
+                    error
+                    <div class="content-item page-title second-line">
+                    correction
+                    </div>
+                    </div>
+                </div>
+                <div class="content-item page-header centered">
+                    there was sufficient contrast between the background and the code for it to be scanned
+                </div>
+            </div>
+            <div class="content-item header-type">
+                what you just experienced
+            </div>
+            <div class="content-item body-type">
+                QR codes can self-correct errors — meaning even if up to 30% of the code is damaged or covered, it can still be read. <br> <br> Every QR code stores extra redundant data using Reed-Solomon error correction. Depending on the level (L, M, Q, H), it can recover 7%, 15%, 25%, or 30% of lost data. This makes it reliable for use in harsh or messy environments.
+            </div>
+            <div class="content-item header-type">
+                in our everyday life
+            </div>
+            <div class="content-item body-type">
+                Why do you think QR codes on delivery boxes, stickers, or receipts still work even when scratched or folded?
+            </div>
+            <div class="content-item next-step centered">
+                <a href="three.html">< move to task three ></a>
+            </div>
+        </div>
+
+        <div class="footer-container" id="footer">
+            did platforms: coded life - ler shan & danikh
+        </div>
+    </div>
+
+    <script>
+    window.onload = () => {
+      let success_two = false;
+      if (localStorage.getItem("success_two")) {
+        const successValue = localStorage.getItem("success_two");
+        success_two = successValue ? true : false;
+      }
+
+      if (!success_two) {
+        const params = new URLSearchParams(document.location.search);
+        const successValue = params.get("success_two");
+        if (successValue) {
+          localStorage.setItem("success_two", true);
+          success_two = true;
+        }
+      }
+
+      if (success_two) {
+        console.log("success!");
+        document.querySelector("#scanned").style.display = "block";
+        document.querySelector("#not-scanned").style.display = "none";
+      } else {
+        console.log("no success.");
+        document.querySelector("#scanned").style.display = "none";
+        document.querySelector("#not-scanned").style.display = "block";
+      }
+      
+    }
+  </script>
+</body>
+
+</html>
