@@ -82,7 +82,7 @@ a {
 
 #dud-image-container {
     position: relative;
-    width: 350px;
+    width: 75vw;
     display: flex;
     align-items: center;
     justify-content: center;
